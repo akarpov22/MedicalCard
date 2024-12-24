@@ -1,4 +1,3 @@
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -9,12 +8,15 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  name      String
-  email     String   @unique
-  role      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id              Int               @id @default(autoincrement())
+  name            String
+  email           String            @unique
+  role            String
+  appointments    Appointment[]     // Added relation field
+  medicalRecords  MedicalRecord[]   // Added relation field
+  prescriptions   Prescription[]    // Added relation field
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
 }
 
 model Appointment {
