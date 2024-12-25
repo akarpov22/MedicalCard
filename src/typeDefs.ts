@@ -2,7 +2,7 @@ import { gql } from 'apollo-server';
 
 const typeDefs = gql`
   type User {
-    id: ID!
+    id: Int!
     name: String!
     email: String!
     role: String!
@@ -16,7 +16,7 @@ const typeDefs = gql`
   }
 
   type Appointment {
-    id: ID!
+    id: Int!
     userId: Int!
     user: User!
     dateTime: String!
@@ -24,7 +24,7 @@ const typeDefs = gql`
   }
 
   type MedicalRecord {
-    id: ID!
+    id: Int!
     userId: Int!
     user: User!
     diagnosis: String!
@@ -32,14 +32,14 @@ const typeDefs = gql`
   }
 
   type Clinic {
-    id: ID!
+    id: Int!
     name: String!
     address: String!
     contact: String!
   }
 
   type Prescription {
-    id: ID!
+    id: Int!
     userId: Int!
     user: User!
     medication: String!
@@ -48,7 +48,7 @@ const typeDefs = gql`
   }
 
   type Review {
-    id: ID!
+    id: Int!
     patientId: Int!
     patient: User!
     doctorId: Int!
@@ -70,33 +70,33 @@ const typeDefs = gql`
   type Mutation {
     # User Mutations
     createUser(name: String!, email: String!, role: String!): User!
-    updateUser(id: ID!, name: String, email: String, role: String): User!
-    deleteUser(id: ID!): User!
+    updateUser(id: Int!, name: String, email: String, role: String): User!
+    deleteUser(id: Int!): User!
 
     # Appointment Mutations
     createAppointment(userId: Int!, dateTime: String!, status: String!): Appointment!
-    updateAppointment(id: ID!, dateTime: String, status: String): Appointment!
-    deleteAppointment(id: ID!): Appointment!
+    updateAppointment(id: Int!, dateTime: String, status: String): Appointment!
+    deleteAppointment(id: Int!): Appointment!
 
     # Medical Record Mutations
     createMedicalRecord(userId: Int!, diagnosis: String!): MedicalRecord!
-    updateMedicalRecord(id: ID!, diagnosis: String): MedicalRecord!
-    deleteMedicalRecord(id: ID!): MedicalRecord!
+    updateMedicalRecord(id: Int!, diagnosis: String): MedicalRecord!
+    deleteMedicalRecord(id: Int!): MedicalRecord!
 
     # Clinic Mutations
     createClinic(name: String!, address: String!, contact: String!): Clinic!
-    updateClinic(id: ID!, name: String, address: String, contact: String): Clinic!
-    deleteClinic(id: ID!): Clinic!
+    updateClinic(id: Int!, name: String, address: String, contact: String): Clinic!
+    deleteClinic(id: Int!): Clinic!
 
     # Prescription Mutations
     createPrescription(userId: Int!, medication: String!, dosage: String!, duration: String!): Prescription!
-    updatePrescription(id: ID!, medication: String, dosage: String, duration: String): Prescription!
-    deletePrescription(id: ID!): Prescription!
+    updatePrescription(id: Int!, medication: String, dosage: String, duration: String): Prescription!
+    deletePrescription(id: Int!): Prescription!
 
     # Review Mutations
     createReview(patientId: Int!, doctorId: Int!, comment: String!, rating: Int!): Review!
-    updateReview(id: ID!, comment: String, rating: Int): Review!
-    deleteReview(id: ID!): Review!
+    updateReview(id: Int!, comment: String, rating: Int): Review!
+    deleteReview(id: Int!): Review!
   }
 `;
 
