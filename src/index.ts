@@ -3,7 +3,7 @@ import { PrismaClient } from '@prisma/client';
 import typeDefs from './typeDefs';
 import * as resolvers from './resolvers';
 
-const prisma = new PrismaClient();
+export const prisma = new PrismaClient();
 
 const server = new ApolloServer({
   typeDefs,

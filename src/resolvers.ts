@@ -5,8 +5,7 @@ import { createMedicalRecordManager } from './controllers/MedicalRecordManager';
 import { createClinicManager } from './controllers/ClinicManager';
 import { createPrescriptionManager } from './controllers/PrescriptionManager';
 import { createReviewManager } from './controllers/ReviewManager';
-
-const prisma = new PrismaClient();
+import { prisma } from '.';
 
 const userManager = createUserManager(prisma);
 const appointmentManager = createAppointmentManager(prisma);
