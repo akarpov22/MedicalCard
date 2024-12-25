@@ -12,9 +12,11 @@ model User {
   name            String
   email           String            @unique
   role            String
-  appointments    Appointment[]     // Added relation field
-  medicalRecords  MedicalRecord[]   // Added relation field
-  prescriptions   Prescription[]    // Added relation field
+  appointments    Appointment[]     
+  medicalRecords  MedicalRecord[]  
+  prescriptions   Prescription[]    
+  reviewsWritten  Review[]          @relation("UserReviews") 
+  reviewsReceived Review[]          @relation("DoctorReviews") 
   createdAt       DateTime          @default(now())
   updatedAt       DateTime          @updatedAt
 }
@@ -49,4 +51,15 @@ model Prescription {
   medication String
   dosage     String
   duration   String
+}
+
+model Review {
+  id        Int      @id @default(autoincrement())
+  patientId    Int
+  patient      User     @relation("UserReviews", fields: [patientId], references: [id])
+  doctorId  Int
+  doctor    User     @relation("DoctorReviews", fields: [doctorId], references: [id])
+  comment   String
+  rating    Int
+  createdAt DateTime @default(now())
 }
